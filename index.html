@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Level 17 — Mara Dusek</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root{
+  --neon:#00ffd5;
+  --pink:#ff4fd8;
+  --yellow:#ffe600;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  height:100vh;
+  color:white;
+  overflow:hidden;
+  background:
+    linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.9)),
+    url("gd-bg.JPG");
+  background-size:cover;
+  background-position:center;
+}
+
+/* GRID ANIMATION */
+.grid{
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(transparent 95%, rgba(0,255,213,.15) 96%),
+    linear-gradient(90deg, transparent 95%, rgba(0,255,213,.15) 96%);
+  background-size:40px 40px;
+  animation:moveGrid 6s linear infinite;
+  pointer-events:none;
+}
+
+@keyframes moveGrid{
+  from{background-position:0 0}
+  to{background-position:40px 40px}
+}
+
+/* CENTER */
+.center{
+  position:relative;
+  z-index:2;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+h1{
+  color:var(--neon);
+  font-size:3rem;
+  text-shadow:0 0 30px var(--neon);
+}
+
+.subtitle{
+  opacity:.8;
+  margin-top:5px;
+}
+
+/* CUBE */
+.cube{
+  width:60px;
+  height:60px;
+  background:var(--yellow);
+  margin:35px 0;
+  box-shadow:0 0 30px var(--yellow);
+  animation:jump 1.2s infinite linear;
+}
+
+@keyframes jump{
+  0%{transform:translateY(0) rotate(0)}
+  50%{transform:translateY(-90px) rotate(180deg)}
+  100%{transform:translateY(0) rotate(360deg)}
+}
+
+/* PROGRESS */
+.progress{
+  width:260px;
+  height:14px;
+  background:#222;
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid var(--neon);
+}
+
+.bar{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,var(--neon),var(--pink));
+  animation:load 10s forwards;
+}
+
+@keyframes load{
+  to{width:100%}
+}
+
+/* POPUP */
+.popup{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.9);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:99;
+}
+
+.popup-box{
+  max-width:700px;
+  max-height:80vh;
+  overflow-y:auto;
+  background:#0d0d0d;
+  border:2px solid var(--neon);
+  padding:40px;
+  box-shadow:0 0 40px var(--neon);
+}
+
+.popup-box h2{
+  color:var(--pink);
+  margin-bottom:15px;
+}
+
+.popup-box p{
+  line-height:2;
+  color:#ddd;
+  margin-bottom:15px;
+}
+
+.signature{
+  margin-top:25px;
+  color:var(--neon);
+  font-style:italic;
+  text-align:right;
+}
+
+button{
+  margin-top:25px;
+  padding:10px 25px;
+  background:var(--pink);
+  border:none;
+  font-weight:bold;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="grid"></div>
+
+<div class="center">
+  <h1>MARA DUSEK</h1>
+  <div class="subtitle">A Life Written in Levels</div>
+
+  <div class="cube"></div>
+
+  <div class="progress">
+    <div class="bar"></div>
+  </div>
+</div>
+
+<!-- POPUP STORY -->
+<div class="popup" id="story">
+  <div class="popup-box">
+    <h2>Level 17 — The Story</h2>
+
+    <p>
+      December 17th marks more than a birthday.
+      It marks the continuation of a journey that began quietly,
+      without fireworks, yet full of meaning.
+      A life entered the world — unaware of how many levels
+      it would one day overcome.
+    </p>
+
+    <p>
+      Like every Geometry Dash level,
+      your path was never meant to be flawless.
+      You fell. You restarted. You learned patterns through pain.
+      And still, you kept pressing forward.
+      That persistence became your real strength.
+    </p>
+
+    <p>
+      There were moments when the screen felt too dark,
+      when spikes appeared too fast,
+      when quitting felt easier than trying again.
+      But history records this clearly:
+      you never truly stopped playing.
+    </p>
+
+    <p>
+      Your parents may not say it every day,
+      but their pride lives in silence.
+      And I, Misoya,
+      have watched you grow level by level,
+      becoming stronger than the version before.
+    </p>
+
+    <p>
+      You matter.
+      Not because you always win,
+      but because you always return.
+      And as long as you keep playing,
+      your story will never end here.
+    </p>
+
+    <div class="signature">
+      — Written with pride, by Misoya
+    </div>
+
+    <button onclick="closeStory()">LEVEL COMPLETE</button>
+  </div>
+</div>
+
+<script>
+setTimeout(()=>{
+  document.getElementById("story").style.display="flex";
+},10000);
+
+function closeStory(){
+  document.getElementById("story").style.display="none";
+}
+</script>
+
+</body>
+</html>
